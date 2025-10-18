@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>摆麻将 Bai Mahjong</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #2c2c2e; /* 深灰色背景 */
+            color: #f2f2f2; /* 浅色字体 */
+            text-align: center;
+            padding: 60px 20px;
+            line-height: 1.6;
+            transition: all 0.3s;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 0.2em;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            color: #ccc;
+            margin-bottom: 1.5em;
+        }
+
+        a {
+            color: #0a84ff; /* 浅蓝色 */
+            text-decoration: none;
+            display: inline-block;
+            margin: 8px 12px;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        .lang-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #0a84ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.3s;
+        }
+
+            .lang-btn:hover {
+                background: #0066cc;
+            }
+    </style>
+</head>
+<body>
+    <button class="lang-btn" id="langBtn">🌐 English</button>
+
+    <h1 id="title">摆麻将 · Bai Mahjong</h1>
+    <h2 id="subtitle">硬核麻将消消乐</h2>
+
+    <p id="dev">开发者：葛洪 (Ge Hong)</p>
+    <p id="email">📧 联系邮箱：<a href="mailto:gehong01@gmail.com">gehong01@gmail.com</a></p>
+
+    <div>
+        <a href="https://icesheetstudio.github.io/BaiMaJiang/app-ads.txt" id="adsLink">App-ads.txt</a>
+        <a href="https://fancy-emu-5ef.notion.site/244263a9944480489f79c5f669892b06" id="cnPolicy">隐私政策（中文）</a>
+        <a href="https://fancy-emu-5ef.notion.site/Bai-Mahjong-Privacy-Policy-252263a99444809f9718c3021a035db8?pvs=74" id="enPolicy">Privacy Policy (English)</a>
+    </div>
+
+    <footer id="footer">© 2025 Ge Hong · All Rights Reserved</footer>
+
+    <script>
+        const langBtn = document.getElementById('langBtn');
+        let currentLang = 'zh';
+
+        langBtn.addEventListener('click', () => {
+            if (currentLang === 'zh') {
+                document.getElementById('title').textContent = 'Bai Mahjong';
+                document.getElementById('subtitle').textContent = 'Hardcore Mahjong Match';
+                document.getElementById('dev').textContent = 'Developer: Ge Hong';
+                document.getElementById('cnPolicy').textContent = 'Privacy Policy (Chinese)';
+                document.getElementById('enPolicy').textContent = 'Privacy Policy (English)';
+                document.getElementById('email').innerHTML = '📧 Contact Email: <a href="mailto:gehong01@gmail.com">gehong01@gmail.com</a>';
+                langBtn.textContent = '🌐 中文';
+                currentLang = 'en';
+            } else {
+                document.getElementById('title').textContent = '摆麻将 · Bai Mahjong';
+                document.getElementById('subtitle').textContent = '硬核麻将消消乐';
+                document.getElementById('dev').textContent = '开发者：葛洪 (Ge Hong)';
+                document.getElementById('cnPolicy').textContent = '隐私政策（中文）';
+                document.getElementById('enPolicy').textContent = 'Privacy Policy (English)';
+                document.getElementById('email').innerHTML = '📧 联系邮箱：<a href="mailto:gehong01@gmail.com">gehong01@gmail.com</a>';
+                langBtn.textContent = '🌐 English';
+                currentLang = 'zh';
+            }
+        });
+    </script>
+</body>
+</html>
