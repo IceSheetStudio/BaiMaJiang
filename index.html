@@ -7,8 +7,8 @@
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #2c2c2e; /* 深灰色背景 */
-            color: #f2f2f2; /* 浅色字体 */
+            background-color: #2c2c2e;
+            color: #f2f2f2;
             text-align: center;
             padding: 60px 20px;
             line-height: 1.6;
@@ -27,10 +27,9 @@
         }
 
         a {
-            color: #0a84ff; /* 浅蓝色 */
+            color: #0a84ff;
             text-decoration: none;
             display: inline-block;
-            margin: 8px 12px;
         }
 
             a:hover {
@@ -60,49 +59,100 @@
             .lang-btn:hover {
                 background: #0066cc;
             }
+
+        .policy-links {
+            margin-top: 40px;
+        }
+
+        .game-desc {
+            background: #3a3a3c;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px auto;
+            max-width: 700px;
+            line-height: 1.4;
+            text-align: left;
+        }
+
+            .game-desc p {
+                margin: 0.5em 0;
+                text-indent: 2em; /* 默认正文缩进2个字符 */
+            }
+
+                .game-desc p:first-child {
+                    text-indent: 0; /* 第一段“游戏背景/ Game Background”不缩进 */
+                }
+
+        .dev-email {
+            display: flex;
+            justify-content: center;
+            gap: 100px; /* 开发者与邮箱间距 */
+            font-size: 1em;
+            max-width: 700px;
+            margin: 20px auto; /* 上下与游戏简介、尾部保持一致 */
+        }
     </style>
 </head>
 <body>
-    <button class="lang-btn" id="langBtn">🌐 English</button>
+    <button class="lang-btn" id="langBtn"></button>
 
-    <h1 id="title">摆麻将 · Bai Mahjong</h1>
-    <h2 id="subtitle">硬核麻将消消乐</h2>
+    <h1 id="title"></h1>
+    <h2 id="subtitle"></h2>
 
-    <p id="dev">开发者：葛洪 (Ge Hong)</p>
-    <p id="email">📧 联系邮箱：<a href="mailto:gehong01@gmail.com">gehong01@gmail.com</a></p>
+    <div class="game-desc" id="gameDesc"></div>
 
-    <div>
-        <a href="https://icesheetstudio.github.io/BaiMaJiang/app-ads.txt" id="adsLink">App-ads.txt</a>
-        <a href="https://fancy-emu-5ef.notion.site/244263a9944480489f79c5f669892b06" id="cnPolicy">隐私政策（中文）</a>
-        <a href="https://fancy-emu-5ef.notion.site/Bai-Mahjong-Privacy-Policy-252263a99444809f9718c3021a035db8?pvs=74" id="enPolicy">Privacy Policy (English)</a>
-    </div>
+    <div class="dev-email" id="devEmail"></div>
 
-    <footer id="footer">© 2025 Ge Hong · All Rights Reserved</footer>
+    <div class="policy-links" id="policyLinks"></div>
+
+    <footer id="footer"></footer>
 
     <script>
         const langBtn = document.getElementById('langBtn');
         let currentLang = 'zh';
 
-        langBtn.addEventListener('click', () => {
-            if (currentLang === 'zh') {
-                document.getElementById('title').textContent = 'Bai Mahjong';
-                document.getElementById('subtitle').textContent = 'Hardcore Mahjong Match';
-                document.getElementById('dev').textContent = 'Developer: Ge Hong';
-                document.getElementById('cnPolicy').textContent = 'Privacy Policy (Chinese)';
-                document.getElementById('enPolicy').textContent = 'Privacy Policy (English)';
-                document.getElementById('email').innerHTML = '📧 Contact Email: <a href="mailto:gehong01@gmail.com">gehong01@gmail.com</a>';
-                langBtn.textContent = '🌐 中文';
-                currentLang = 'en';
-            } else {
-                document.getElementById('title').textContent = '摆麻将 · Bai Mahjong';
-                document.getElementById('subtitle').textContent = '硬核麻将消消乐';
-                document.getElementById('dev').textContent = '开发者：葛洪 (Ge Hong)';
-                document.getElementById('cnPolicy').textContent = '隐私政策（中文）';
-                document.getElementById('enPolicy').textContent = 'Privacy Policy (English)';
-                document.getElementById('email').innerHTML = '📧 联系邮箱：<a href="mailto:gehong01@gmail.com">gehong01@gmail.com</a>';
-                langBtn.textContent = '🌐 English';
-                currentLang = 'zh';
+        const textData = {
+            zh: {
+                title: '摆麻将',
+                subtitle: '硬核麻将消消乐',
+                devEmail: `<span>开发者：葛洪</span><span>📧 联系邮箱：<a href="mailto:gehong01@gmail.com">gehong01@gmail.com</a></span>`,
+                gameDesc: `<p>游戏背景：</p>
+                               <p>这款游戏由独立开发者葛洪制作，灵感来源于作者奶奶每天都要玩的单人麻将游戏，老人家称之为“摆麻将”。</p>
+                               <p>作者致力于复刻这款经典麻将游戏，将其搬进数字世界。如果它能带给您快乐，欢迎分享给您的朋友，让更多人一起享受《摆麻将》的乐趣。</p>`,
+                policyLinks: `<a href="https://fancy-emu-5ef.notion.site/244263a9944480489f79c5f669892b06">隐私政策（中文）</a> &nbsp;&nbsp;
+                                  <a href="https://fancy-emu-5ef.notion.site/Bai-Mahjong-Privacy-Policy-252263a99444809f9718c3021a035db8?pvs=74">Privacy Policy (English)</a>`,
+                footer: '© 2025 Ge Hong · All Rights Reserved',
+                btn: '🌐 English'
+            },
+            en: {
+                title: 'Bai Mahjong',
+                subtitle: 'Hardcore Mahjong Match',
+                devEmail: `<span>Developer: Ge Hong</span><span>📧 Contact Email: <a href="mailto:gehong01@gmail.com">gehong01@gmail.com</a></span>`,
+                gameDesc: `<p>Game Background:</p>
+                               <p>This game was independently developed by Ge Hong, inspired by the single-player Mahjong game that the developer’s grandmother played daily, which she fondly called "Bai Mahjong."</p>
+                               <p>The developer strives to faithfully recreate this classic Mahjong experience. If you enjoy it, share with friends so more people can play Bai Mahjong.</p>`,
+                policyLinks: `<a href="https://fancy-emu-5ef.notion.site/244263a9944480489f79c5f669892b06">隐私政策（中文）</a> &nbsp;&nbsp;
+                                  <a href="https://fancy-emu-5ef.notion.site/Bai-Mahjong-Privacy-Policy-252263a99444809f9718c3021a035db8?pvs=74">Privacy Policy (English)</a>`,
+                footer: '© 2025 Ge Hong · All Rights Reserved',
+                btn: '🌐 中文'
             }
+        };
+
+        function renderText(lang) {
+            document.getElementById('title').innerHTML = textData[lang].title;
+            document.getElementById('subtitle').innerHTML = textData[lang].subtitle;
+            document.getElementById('gameDesc').innerHTML = textData[lang].gameDesc;
+            document.getElementById('devEmail').innerHTML = textData[lang].devEmail;
+            document.getElementById('policyLinks').innerHTML = textData[lang].policyLinks;
+            document.getElementById('footer').textContent = textData[lang].footer;
+            langBtn.textContent = textData[lang].btn;
+        }
+
+        renderText(currentLang);
+
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            renderText(currentLang);
         });
     </script>
 </body>
