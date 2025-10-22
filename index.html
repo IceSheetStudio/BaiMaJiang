@@ -83,7 +83,6 @@
                     text-indent: 0;
                 }
 
-        /* ✅ 新增 App Store 按钮样式（暗色风格） */
         .download-btn {
             display: inline-block;
             background: #0a84ff;
@@ -129,8 +128,7 @@
 
     <div class="game-desc" id="gameDesc"></div>
 
-    <!-- ✅ 新增按钮，放在游戏简介下方 -->
-    <a class="download-btn" id="downloadBtn" target="_blank"> 在 App Store 打开</a>
+    <a class="download-btn" id="downloadBtn" target="_blank">iOS 下载</a>
 
     <div class="dev-email" id="devEmail"></div>
 
@@ -155,7 +153,8 @@
                 policyLinks: `<a href="https://fancy-emu-5ef.notion.site/244263a9944480489f79c5f669892b06">隐私政策（中文）</a> &nbsp;&nbsp;
                                   <a href="https://fancy-emu-5ef.notion.site/Bai-Mahjong-Privacy-Policy-252263a99444809f9718c3021a035db8?pvs=74">Privacy Policy (English)</a>`,
                 footer: '© 2025 Ge Hong · All Rights Reserved',
-                btn: '🌐 English'
+                btn: '🌐 English',
+                appStoreLink: "https://apps.apple.com/cn/app/baimahjong/id6749504746"
             },
             en: {
                 title: 'Bai Mahjong',
@@ -168,7 +167,8 @@
                 policyLinks: `<a href="https://fancy-emu-5ef.notion.site/244263a9944480489f79c5f669892b06">隐私政策（中文）</a> &nbsp;&nbsp;
                                   <a href="https://fancy-emu-5ef.notion.site/Bai-Mahjong-Privacy-Policy-252263a99444809f9718c3021a035db8?pvs=74">Privacy Policy (English)</a>`,
                 footer: '© 2025 Ge Hong · All Rights Reserved',
-                btn: '🌐 中文'
+                btn: '🌐 中文',
+                appStoreLink: "https://apps.apple.com/us/app/baimahjong/id6749504746"
             }
         };
 
@@ -181,6 +181,7 @@
             document.getElementById('footer').textContent = textData[lang].footer;
             langBtn.textContent = textData[lang].btn;
             downloadBtn.textContent = textData[lang].downloadText;
+            downloadBtn.href = textData[lang].appStoreLink;
         }
 
         renderText(currentLang);
@@ -189,9 +190,6 @@
             currentLang = currentLang === 'zh' ? 'en' : 'zh';
             renderText(currentLang);
         });
-
-        // ⚠️ 替换为你的 App Store 链接
-        downloadBtn.href = "https://apps.apple.com/us/app/baimahjong/id6749504746";
     </script>
 </body>
 </html>
