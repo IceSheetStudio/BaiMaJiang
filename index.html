@@ -76,20 +76,48 @@
 
             .game-desc p {
                 margin: 0.5em 0;
-                text-indent: 2em; /* 默认正文缩进2个字符 */
+                text-indent: 2em;
             }
 
                 .game-desc p:first-child {
-                    text-indent: 0; /* 第一段“游戏背景/ Game Background”不缩进 */
+                    text-indent: 0;
                 }
+
+        /* ✅ 新增 App Store 按钮样式（暗色风格） */
+        .download-btn {
+            display: inline-block;
+            background: #0a84ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 1em;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+
+            .download-btn:hover {
+                background: #1b9aff;
+            }
 
         .dev-email {
             display: flex;
             justify-content: center;
-            gap: 100px; /* 开发者与邮箱间距 */
+            gap: 50px;
             font-size: 1em;
             max-width: 700px;
-            margin: 20px auto; /* 上下与游戏简介、尾部保持一致 */
+            margin: 20px auto;
+        }
+
+        @media (max-width: 600px) {
+            .dev-email {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                font-size: 0.95em;
+            }
         }
     </style>
 </head>
@@ -101,6 +129,9 @@
 
     <div class="game-desc" id="gameDesc"></div>
 
+    <!-- ✅ 新增按钮，放在游戏简介下方 -->
+    <a class="download-btn" id="downloadBtn" target="_blank"> 在 App Store 打开</a>
+
     <div class="dev-email" id="devEmail"></div>
 
     <div class="policy-links" id="policyLinks"></div>
@@ -109,12 +140,14 @@
 
     <script>
         const langBtn = document.getElementById('langBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
         let currentLang = 'zh';
 
         const textData = {
             zh: {
                 title: '摆麻将',
                 subtitle: '硬核麻将消消乐',
+                downloadText: '在 App Store 打开',
                 devEmail: `<span>开发者：葛洪</span><span>📧 联系邮箱：<a href="mailto:gehong01@gmail.com">gehong01@gmail.com</a></span>`,
                 gameDesc: `<p>游戏背景：</p>
                                <p>这款游戏由独立开发者葛洪制作，灵感来源于作者奶奶每天都要玩的单人麻将游戏，老人家称之为“摆麻将”。</p>
@@ -127,6 +160,7 @@
             en: {
                 title: 'Bai Mahjong',
                 subtitle: 'Hardcore Mahjong Match',
+                downloadText: 'Open in App Store',
                 devEmail: `<span>Developer: Ge Hong</span><span>📧 Contact Email: <a href="mailto:gehong01@gmail.com">gehong01@gmail.com</a></span>`,
                 gameDesc: `<p>Game Background:</p>
                                <p>This game was independently developed by Ge Hong, inspired by the single-player Mahjong game that the developer’s grandmother played daily, which she fondly called "Bai Mahjong."</p>
@@ -146,6 +180,7 @@
             document.getElementById('policyLinks').innerHTML = textData[lang].policyLinks;
             document.getElementById('footer').textContent = textData[lang].footer;
             langBtn.textContent = textData[lang].btn;
+            downloadBtn.textContent = textData[lang].downloadText;
         }
 
         renderText(currentLang);
@@ -154,6 +189,9 @@
             currentLang = currentLang === 'zh' ? 'en' : 'zh';
             renderText(currentLang);
         });
+
+        // ⚠️ 替换为你的 App Store 链接
+        downloadBtn.href = "https://apps.apple.com/app/idYOUR_APP_ID";
     </script>
 </body>
 </html>
